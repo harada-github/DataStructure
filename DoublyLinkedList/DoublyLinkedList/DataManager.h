@@ -7,9 +7,6 @@
 //
 //============================================================
 #pragma once
-#include <iostream>
-
-using namespace std;
 
 
 //============================================================
@@ -18,14 +15,11 @@ using namespace std;
 class DataManager
 {
 private:
-	
 
 public:
 	DataManager();   // コンストラクタ
 	~DataManager();  // デストラクタ
 
-	static void ReadScoreTextFile(void);
-	static void LoadData(void);
-
-	static string data;       // 全データを格納
+	static void DispData(void);          // データを表示
+	static void ReadScoreTextFile(void); // テキストファイルを読み込む
 };

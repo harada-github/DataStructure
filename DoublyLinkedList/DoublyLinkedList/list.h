@@ -8,6 +8,8 @@
 //============================================================
 #pragma once
 #include <iostream>
+#include <string>
+
 
 using namespace std;
 
@@ -21,12 +23,6 @@ private:
 	int score;            // スコアを格納
 	string userName;      // 名前を格納
 
-	List* nextPtr;        // 次の要素へのポインタ
-	List* prevPtr;        // 前の要素へのポインタ
-
-	static List* topPtr;  // 先頭の要素へのポインタ
-	static List* endPtr;  // 末尾の要素へのポインタ
-
 public:
 	List();                                            // コンストラクタ
 	List(int aScore, string aUserName);                // 引数付きコンストラクタ
@@ -37,4 +33,13 @@ public:
 	static void AddEnd(int aScore, string aUserName);  // 末尾にデータを追加
 	static void Sort(void);                            // ソート（並び替え）
 	static List* Create(int aScore, string aUserName); // 生成
+	static int GetListCount(void);                     // 要素の数を取得
+
+	List* nextPtr;        // 次の要素へのポインタ
+	List* prevPtr;        // 前の要素へのポインタ
+
+	static List* topPtr;  // 先頭の要素へのポインタ
+	static List* endPtr;  // 末尾の要素へのポインタ
+
+	static int listCount; // 要素の個数をカウント
 };
