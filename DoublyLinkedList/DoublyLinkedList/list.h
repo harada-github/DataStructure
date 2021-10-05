@@ -18,22 +18,23 @@ using namespace std;
 class List
 {
 private:
-	int score;         // スコアを格納
-	string userName;   // 名前を格納
+	int score;            // スコアを格納
+	string userName;      // 名前を格納
 
-	List* nextPtr; // 次の要素へのポインタ
-	List* prevPtr; // 前の要素へのポインタ
+	List* nextPtr;        // 次の要素へのポインタ
+	List* prevPtr;        // 前の要素へのポインタ
 
 	static List* topPtr;  // 先頭の要素へのポインタ
 	static List* endPtr;  // 末尾の要素へのポインタ
 
 public:
-	List();   // コンストラクタ
-	~List();  // デストラクタ
+	List();                                            // コンストラクタ
+	List(int aScore, string aUserName);                // 引数付きコンストラクタ
+	~List();                                           // デストラクタ
 
-	virtual void OutputData(void); // データを出力
-	static void AddTop(void);      // 先頭にデータを追加
-	static void AddEnd(void);      // 末尾にデータを追加
-	static void Sort(void);        // ソート（並び替え）
-	static List* Create(void);     // 生成
+	virtual void OutputData(void);                     // データを出力
+	static void AddTop(int aScore, string aUserName);  // 先頭にデータを追加
+	static void AddEnd(int aScore, string aUserName);  // 末尾にデータを追加
+	static void Sort(void);                            // ソート（並び替え）
+	static List* Create(int aScore, string aUserName); // 生成
 };

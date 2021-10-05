@@ -30,6 +30,16 @@ List::List()
 
 
 //------------------------------------------------------------
+//　引数付きコンストラクタ
+//------------------------------------------------------------
+List::List(int aScore, string aUserName)
+{
+	score = aScore;
+	userName = aUserName;
+}
+
+
+//------------------------------------------------------------
 //　デストラクタ
 //------------------------------------------------------------
 List::~List()
@@ -51,9 +61,9 @@ void List::OutputData()
 //------------------------------------------------------------
 //　先頭にデータを追加
 //------------------------------------------------------------
-void List::AddTop()
+void List::AddTop(int aScore, string aUserName)
 {
-	List* list = Create();
+	List* list = Create(aScore, aUserName);
 
 	// 生成できなかったらreturn
 	if (list == nullptr) return;
@@ -80,9 +90,9 @@ void List::AddTop()
 //------------------------------------------------------------
 //　末尾にデータを追加
 //------------------------------------------------------------
-void List::AddEnd()
+void List::AddEnd(int aScore, string aUserName)
 {
-	List* list = Create();
+	List* list = Create(aScore, aUserName);
 
 	// 生成できなかったらreturn
 	if (list == nullptr) return;
@@ -117,9 +127,9 @@ void List::Sort()
 //------------------------------------------------------------
 //　生成
 //------------------------------------------------------------
-List* List::Create()
+List* List::Create(int aScore, string aUserName)
 {
-	List* list = new List();
+	List* list = new List(aScore, aUserName);
 
 	return list;
 }
