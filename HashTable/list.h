@@ -29,6 +29,7 @@ public:
 	~List();                                                // デストラクタ
 
 	virtual void OutputData(void);                          // データを出力
+	virtual void OutputWord(void);                          // 単語を出力
 	static void AddTop(string aWord, string aDescription);  // 先頭にデータを追加
 	static void AddEnd(string aWord, string aDescription);  // 末尾にデータを追加
 	static void Sort(void);                                 // ソート（並び替え）

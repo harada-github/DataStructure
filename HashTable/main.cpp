@@ -18,7 +18,18 @@
 //------------------------------------------------------------
 int main(void)
 {
+	// データを追加
 	HashTable::DataList();
 
-	HashTable::Search("ゲーム");
+	// データを表示
+	HashTable::Disp();
+
+	// 検索したい単語を入力する
+	string word = "";
+	cout << "\n文字を入力して Enter を押してください。" << endl;
+	cin >> word;
+	cout << "\n" << endl;
+
+	// 検索して表示
+	HashTable::Search(word);
 }

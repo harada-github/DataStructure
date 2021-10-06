@@ -27,6 +27,7 @@ public:
 	HashTable();                                            // コンストラクタ
 	~HashTable();                                           // デストラクタ
 
+	static void Disp(void);                                 // 単語を表示
 	static void Search(string aWord);                       // 単語から検索
 	static void AddData(string aWord, string aDescription); // 要素を追加する
 	static void DataList(void);                             // データの一覧

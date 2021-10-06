@@ -55,9 +55,44 @@ HashTable::~HashTable()
 			// データがある場合はその次のポインタを確認
 			while (temp != nullptr)
 			{
+				// データの削除
 				dele = temp;
 				temp = temp->nextPtr;
 				delete dele;
+			}
+		}
+	}
+}
+
+
+//------------------------------------------------------------
+//　単語を表示
+//------------------------------------------------------------
+void HashTable::Disp()
+{
+	// 代入用の変数
+	List* temp = nullptr;
+
+	// 文を表示
+	std::cout << "[調べることができる単語の一覧]" << std::endl;
+
+	// データの一覧表示
+	for (int i = 0; i < 10; i++)
+	{
+		if (hashData[i] == nullptr)
+		{
+			continue;
+		}
+		else
+		{
+			temp = hashData[i];
+
+			// データがある場合はその次のポインタを確認
+			while (temp != nullptr)
+			{
+				// データ表示
+				temp->OutputWord();
+				temp = temp->nextPtr;
 			}
 		}
 	}
@@ -81,24 +116,28 @@ void HashTable::Search(string aWord)
 		List* temp = hashData[GetHash(aWord)];
 
 		// データがある場合はその次のポインタを確認
-		while (temp->nextPtr != nullptr)
+		while (temp != nullptr)
 		{
+			// 同じ名前の単語が見つかった場合
+			if (temp->GetWord() == aWord)
+			{
+				// データ表示
+				temp->OutputData();
+				return;
+			}
+
+			// 次のポインタがNULLの場合はここでreturn
+			if (temp->nextPtr == nullptr)
+			{
+				return;
+			}
+
+			// 次ポインタへ更新
 			temp = temp->nextPtr;
 		}
 
-		// 同じ名前の単語が見つかった場合
-		if (temp->GetWord() == aWord)
-		{
-			// データ表示
-			temp->OutputData();
-			return;
-		}
-		else
-		{
-			// データがない場合
-			std::cout << "一致するデータが見つかりませんでした。" << std::endl;
-		}
-		
+		// データがない場合
+		std::cout << "一致するデータが見つかりませんでした。" << std::endl;
 	}
 }
 
@@ -137,9 +176,7 @@ void HashTable::AddData(string aWord, string aDescription)
 		temp->nextPtr = List::Create(aWord, aDescription);
 		temp->nextPtr->prevPtr = temp;
 		temp->nextPtr->nextPtr = nullptr;
-
 	}
-	
 }
 
 
@@ -148,6 +185,7 @@ void HashTable::AddData(string aWord, string aDescription)
 //------------------------------------------------------------
 void HashTable::DataList()
 {
+	// ここでデータを追加する
 	AddData("つくえ", "本を読み、字を書き、また仕事をするために使う台。");
 	AddData("いす", "人が腰をかけるための家具の総称。");
 	AddData("たんす", "引出し，戸棚，衣装盆等からなる収納家具。");
@@ -156,6 +194,10 @@ void HashTable::DataList()
 	AddData("テレビ", "テレビジョンの略");
 	AddData("ごみばこ", "不要になったファイルやフォルダを一時的に保管する場所のこと。");
 	AddData("ゲーム", "遊びごと。");
+	AddData("くうきせいじょうき", "塵埃(じんあい)などの微粒子を取り除き、汚れた空気を浄化する装置。");
+	AddData("ハンガー", "洋服の肩の部分に入れてつるす、肩の形をした器具。");
+	AddData("でんしレンジ", "マイクロ波の性質を利用して食品を加熱する調理器具。");
+	AddData("ノートパソコン", "ノートブック型パーソナルコンピュータ。");
 }
 
 
@@ -164,6 +206,5 @@ void HashTable::DataList()
 //------------------------------------------------------------
 int HashTable::GetHash(string aWord)
 {
-	return aWord.length() % 10;
+	return aWord.length() / 2 % 10;
 }
-
