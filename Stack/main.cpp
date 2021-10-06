@@ -16,7 +16,35 @@
 //------------------------------------------------------------
 //　メイン関数
 //------------------------------------------------------------
-void main(void)
+int main(void)
 {
+	// 要素を追加
+	Stack::Push(0, "Tanaka");
+	Stack::Push(1, "Satou");
+	Stack::Push(2, "Kobayashi");
+	Stack::Push(3, "Kishida");
+	Stack::Push(4, "Shimamura");
+	Stack::Push(5, "Suga");
+	// データを一覧表示
+	Stack::Disp();
+	// 改行用
+	std::cout << "" << endl;
+	
+
+	// １回目
+	// 要素を取り出す
+	Stack::Pop();
+	std::cout << "" << endl;
+	// データを再度一覧表示
+	Stack::Disp();
+	// 改行用
+	std::cout << "" << endl;
+
+
+	// ２回目
+	// 要素を取り出す
+	Stack::Pop();
+	std::cout << "" << endl;
+	// データを再度一覧表示
 	Stack::Disp();
 }

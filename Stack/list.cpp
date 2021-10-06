@@ -196,8 +196,9 @@ void List::Sort()
 //------------------------------------------------------------
 //　削除
 //　num は削除するデータの位置（1を先頭とする）
+//  isDelete は削除するデータを解放するかどうか
 //------------------------------------------------------------
-void List::Remove(int num)
+void List::Remove(int num, bool isDelete)
 {
 	// リストの要素の個数を取得
 	int count = GetListCount();
@@ -213,7 +214,7 @@ void List::Remove(int num)
 		// 要素が一つの場合
 
 		// 削除
-		delete topPtr;
+		if(isDelete) delete topPtr;
 
 		// 先頭と末尾をNULLにする
 		topPtr = endPtr = nullptr;
@@ -226,7 +227,7 @@ void List::Remove(int num)
 		temp = topPtr->nextPtr;
 
 		// 削除
-		delete topPtr;
+		if (isDelete) delete topPtr;
 
 		// 先頭の要素を更新
 		topPtr = temp;
@@ -242,7 +243,7 @@ void List::Remove(int num)
 		temp = endPtr->prevPtr;
 
 		// 削除
-		delete endPtr;
+		if (isDelete) delete endPtr;
 
 		// 末尾の要素を更新
 		endPtr = temp;
@@ -268,7 +269,7 @@ void List::Remove(int num)
 		temp->nextPtr->prevPtr = temp->prevPtr;
 
 		// 削除
-		delete temp;
+		if (isDelete) delete temp;
 	}
 
 	// 個数を減らす

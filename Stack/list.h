@@ -32,7 +32,7 @@ public:
 	static void AddTop(int aScore, string aUserName);  // 先頭にデータを追加
 	static void AddEnd(int aScore, string aUserName);  // 末尾にデータを追加
 	static void Sort(void);                            // ソート（並び替え）
-	static void Remove(int num);                       // 削除
+	static void Remove(int num, bool isDelete);        // 削除
 	static List* Create(int aScore, string aUserName); // 生成
 	static int GetListCount(void);                     // 要素の数を取得
 
