@@ -20,21 +20,22 @@ using namespace std;
 class List
 {
 private:
-	int score;            // スコアを格納
-	string userName;      // 名前を格納
+	string word;            // 単語を格納
+	string description;     // 説明文を格納
 
 public:
-	List();                                            // コンストラクタ
-	List(int aScore, string aUserName);                // 引数付きコンストラクタ
-	~List();                                           // デストラクタ
+	List();                                                 // コンストラクタ
+	List(string aWord, string aDescription);                // 引数付きコンストラクタ
+	~List();                                                // デストラクタ
 
-	virtual void OutputData(void);                     // データを出力
-	static void AddTop(int aScore, string aUserName);  // 先頭にデータを追加
-	static void AddEnd(int aScore, string aUserName);  // 末尾にデータを追加
-	static void Sort(void);                            // ソート（並び替え）
-	static void Remove(int num, bool isDelete);        // 削除
-	static List* Create(int aScore, string aUserName); // 生成
-	static int GetListCount(void);                     // 要素の数を取得
+	virtual void OutputData(void);                          // データを出力
+	static void AddTop(string aWord, string aDescription);  // 先頭にデータを追加
+	static void AddEnd(string aWord, string aDescription);  // 末尾にデータを追加
+	static void Sort(void);                                 // ソート（並び替え）
+	static void Remove(int num, bool isDelete);             // 削除
+	static List* Create(string aWord, string aDescription); // 生成
+	static int GetListCount(void);                          // 要素の数を取得
+	string GetWord(void);                                   // wordを取得
 
 	List* nextPtr;        // 次の要素へのポインタ
 	List* prevPtr;        // 前の要素へのポインタ

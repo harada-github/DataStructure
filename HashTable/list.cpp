@@ -34,15 +34,15 @@ List::List()
 //------------------------------------------------------------
 //　引数付きコンストラクタ
 //------------------------------------------------------------
-List::List(int aScore, string aUserName)
+List::List(string aWord, string aDescription)
 {
 	// 初期化しておく
 	nextPtr = nullptr;
 	prevPtr = nullptr;
 
 	// 値を代入
-	score = aScore;
-	userName = aUserName;
+	word = aWord;
+	description = aDescription;
 }
 
 
@@ -61,16 +61,17 @@ List::~List()
 void List::OutputData()
 {
 	// スコアと名前を出力
-	std::cout << score << "　" << userName << std::endl;
+	std::cout << "単語：" << word << std::endl;
+	std::cout << "説明：" << description << std::endl;
 }
 
 
 //------------------------------------------------------------
 //　先頭にデータを追加
 //------------------------------------------------------------
-void List::AddTop(int aScore, string aUserName)
+void List::AddTop(string aWord, string aDescription)
 {
-	List* list = Create(aScore, aUserName);
+	List* list = Create(aWord, aDescription);
 
 	// 生成できなかったらreturn
 	if (list == nullptr) return;
@@ -97,9 +98,9 @@ void List::AddTop(int aScore, string aUserName)
 //------------------------------------------------------------
 //　末尾にデータを追加
 //------------------------------------------------------------
-void List::AddEnd(int aScore, string aUserName)
+void List::AddEnd(string aWord, string aDescription)
 {
-	List* list = Create(aScore, aUserName);
+	List* list = Create(aWord, aDescription);
 
 	// 生成できなかったらreturn
 	if (list == nullptr) return;
@@ -147,8 +148,8 @@ void List::Sort()
 
 		for (int i = 0; i < count - 1 - j; i++)
 		{
-			// list2のscoreが高い場合は入れ替え
-			if (list1->score < list2->score)
+			// list2のwordが高い場合は入れ替え
+			if (list1->word < list2->word)
 			{
 				// list1の次とlist2の前の接続先を変更
 				list1->nextPtr = list2->nextPtr;
@@ -280,10 +281,10 @@ void List::Remove(int num, bool isDelete)
 //------------------------------------------------------------
 //　生成
 //------------------------------------------------------------
-List* List::Create(int aScore, string aUserName)
+List* List::Create(string aWord, string aDescription)
 {
 	// 引数付きで要素を生成
-	List* list = new List(aScore, aUserName);
+	List* list = new List(aWord, aDescription);
 
 	// 要素の個数をカウント
 	listCount++;
@@ -291,10 +292,20 @@ List* List::Create(int aScore, string aUserName)
 	return list;
 }
 
+
 //------------------------------------------------------------
 //　要素の個数を取得
 //------------------------------------------------------------
 int List::GetListCount()
 {
 	return listCount;
+}
+
+
+//------------------------------------------------------------
+//　wordを取得
+//------------------------------------------------------------
+string List::GetWord()
+{
+	return word;
 }
