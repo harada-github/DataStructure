@@ -139,7 +139,6 @@ void List::Sort()
 	// 入れ替えに使用するための変数
 	List *list1, *list2;
 
-	// 
 	for (int j = 0; j < count - 1; j++)
 	{
 		// 先頭とその次のアドレスを比較
@@ -191,6 +190,89 @@ void List::Sort()
 			}
 		}
 	}
+}
+
+
+//------------------------------------------------------------
+//　削除
+//　num は削除するデータの位置（1を先頭とする）
+//------------------------------------------------------------
+void List::Remove(int num)
+{
+	// リストの要素の個数を取得
+	int count = GetListCount();
+
+	// 個数が0 または 削除したい位置が0 または 削除したい位置が個数より大きければ return
+	if (count == 0 || num == 0 || num > count) return;
+
+	// 削除に使用する変数
+	List* temp;
+
+	if (count == 1)
+	{
+		// 要素が一つの場合
+
+		// 削除
+		delete topPtr;
+
+		// 先頭と末尾をNULLにする
+		topPtr = endPtr = nullptr;
+	}
+	else if (num == 1)
+	{
+		// 先頭の要素の場合
+
+		// 削除する前に次のポインタを保存
+		temp = topPtr->nextPtr;
+
+		// 削除
+		delete topPtr;
+
+		// 先頭の要素を更新
+		topPtr = temp;
+
+		// 先頭の要素になるポインタの前ポインタをNULLにする
+		temp->prevPtr = nullptr;
+	}
+	else if (num == count)
+	{
+		// 末尾の要素の場合
+
+		// 削除する前に前のポインタを保存
+		temp = endPtr->prevPtr;
+
+		// 削除
+		delete endPtr;
+
+		// 末尾の要素を更新
+		endPtr = temp;
+
+		// 末尾の要素になるポインタの次ポインタをNULLにする
+		temp->nextPtr = nullptr;
+	}
+	else
+	{
+		// 先頭と末尾以外の場合
+
+		// 先頭のポインタを保存
+		temp = topPtr;
+
+		// numの位置までたどる
+		for (int i = 1; i < num; i++)
+		{
+			temp = temp->nextPtr;
+		}
+
+		// 削除したい位置のポインタの前後を更新
+		temp->prevPtr->nextPtr = temp->nextPtr;
+		temp->nextPtr->prevPtr = temp->prevPtr;
+
+		// 削除
+		delete temp;
+	}
+
+	// 個数を減らす
+	listCount--;
 }
 
 

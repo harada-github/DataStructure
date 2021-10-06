@@ -21,8 +21,11 @@ void main(void)
 	// テキストファイルからデータを取得
 	DataManager::ReadScoreTextFile();
 
+	// データを削除
+	List::Remove(100);
+
 	// 順番を上位順に変更
-	List::Sort();
+	//List::Sort();
 
 	// データを表示
 	DataManager::DispData();
