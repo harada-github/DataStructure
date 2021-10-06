@@ -3,7 +3,7 @@
 //  title  : データ構造 [main.cpp]
 //  Author : 原田 陽央
 //   Date  : 2021/10/04
-//  Update : 2021/10/05
+//  Update : 2021/10/06
 //
 //============================================================
 #include "list.h"
@@ -21,11 +21,8 @@ void main(void)
 	// テキストファイルからデータを取得
 	DataManager::ReadScoreTextFile();
 
-	// データを削除
-	List::Remove(100);
-
 	// 順番を上位順に変更
-	//List::Sort();
+	List::Sort();
 
 	// データを表示
 	DataManager::DispData();
