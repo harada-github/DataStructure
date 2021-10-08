@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1525
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataStructure", "DataStructure\DataStructure.vcxproj", "{F8543584-DAE4-455D-97F1-B16AA44020C8}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DoublyLinkedList", "DoublyLinkedList\DoublyLinkedList.vcxproj", "{A226C0D4-229B-48AD-A19B-FF59537E7DEA}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Stack", "Stack\Stack.vcxproj", "{4C847F47-A2A1-4167-A35D-A103049A6776}"
@@ -21,14 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Debug|x64.ActiveCfg = Debug|x64
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Debug|x64.Build.0 = Debug|x64
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Debug|x86.ActiveCfg = Debug|Win32
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Debug|x86.Build.0 = Debug|Win32
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Release|x64.ActiveCfg = Release|x64
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Release|x64.Build.0 = Release|x64
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Release|x86.ActiveCfg = Release|Win32
-		{F8543584-DAE4-455D-97F1-B16AA44020C8}.Release|x86.Build.0 = Release|Win32
 		{A226C0D4-229B-48AD-A19B-FF59537E7DEA}.Debug|x64.ActiveCfg = Debug|x64
 		{A226C0D4-229B-48AD-A19B-FF59537E7DEA}.Debug|x64.Build.0 = Debug|x64
 		{A226C0D4-229B-48AD-A19B-FF59537E7DEA}.Debug|x86.ActiveCfg = Debug|Win32
