@@ -10,6 +10,7 @@
 //　インクルード
 //============================================================
 #include "list.h"
+#include "DoublyLinkedList.h"
 #include "DataManager.h"
 
 
@@ -24,9 +25,6 @@ int main(void)
 	// テキストファイルからデータを取得
 	DataManager::ReadScoreTextFile();
 
-	// 順番を上位順に変更
-	List::Sort();
-
-	// データを表示
-	DataManager::DispData();
+	//// データを表示
+	DataManager::DispData(true);
 }

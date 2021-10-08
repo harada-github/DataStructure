@@ -21,6 +21,12 @@
 
 
 //============================================================
+//　変数宣言
+//============================================================
+DoublyLinkedList DataManager::scoresList;
+
+
+//============================================================
 //　関数
 //============================================================
 //------------------------------------------------------------
@@ -37,51 +43,39 @@ DataManager::DataManager()
 //------------------------------------------------------------
 DataManager::~DataManager()
 {
-	// 解放処理
-	List* tempList;
-	List* deleteList = List::topPtr;
-
-	// エラーチェック
-	if (tempList == nullptr)
-	{
-		std::cout << "消去するデータはありません。" << std::endl;
-		return;
-	}
-
-	// リストの要素を順に解放
-	while (tempList != nullptr)
-	{
-		tempList = deleteList->nextPtr;
-		delete deleteList;
-		deleteList = tempList;
-	}
-
-	// 先頭と最後のポインタをNULLにする
-	List::topPtr = nullptr;
-	List::endPtr = nullptr;
+	;
 }
 
 
 //------------------------------------------------------------
 //　データを表示
+//　isSort：true なら並び替えをする・false なら並び替えをしない
 //------------------------------------------------------------
-void DataManager::DispData()
+void DataManager::DispData(bool isSort)
 {
+	scoresList.Remove(2);
 	// 表示用の変数
-	List* dispList = List::topPtr;
+	DoublyLinkedList::Node* temp = scoresList.GetTopPtr();
+
+	// isSort が true の場合は並び替えをする
+	//if (isSort) scoresList.Sort();
+
 
 	// エラーチェック
-	if (dispList == nullptr)
+	if (temp == nullptr)
 	{
 		std::cout << "データがありません。" << std::endl;
 		return;
 	}
-	
-	// 要素の個数分表示
-	for (int i = 0; i < List::GetListCount(); i++)
+
+	// temp が NULL じゃなければデータ表示
+	while (temp != nullptr)
 	{
-		dispList->OutputData();
-		dispList = dispList->nextPtr;
+		// データを表示
+		std::cout << "スコア：" << temp->recordData.score << "　" << "ユーザー名：" << temp->recordData.userName << std::endl;
+
+		// 次のポインタに更新
+		temp = temp->nextPtr;
 	}
 }
 
@@ -98,31 +92,38 @@ void DataManager::ReadScoreTextFile()
 	std::string score;
 	std::string userName;
 	char temp = NULL;
+	RecordData data;
 
 	// ファイルを開く
 	FILE* fp = fopen(fileName, "r");
 
 	// データ数によって変わるような仕様にする
 	// 100の部分を修正予定
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		// 全角スペースまでの文字を取得（9は全角スペース）
-		while ((temp = fgetc(fp)) != 9)
+		while ((temp = fgetc(fp)) != '\t')
 		{
 			score += temp;
 		}
 
 		// 改行までの文字を取得（10は改行）
-		while ((temp = fgetc(fp)) != 10)
+		while ((temp = fgetc(fp)) != '\n')
 		{
 			userName += temp;
 		}
 		
 		// リストの要素を生成
-		List::AddEnd(atoi(score.c_str()), userName);
+		data.score = atoi(score.c_str());
+		data.userName = userName;
+
+		// リストに追加
+		scoresList.AddEnd(data);
 
 		// 初期化
 		score = "";
 		userName = "";
+		data.score = 0;
+		data.userName = "";
 	}
 }

@@ -10,16 +10,23 @@
 
 
 //============================================================
+//　インクルード
+//============================================================
+#include "DoublyLinkedList.h"
+
+
+//============================================================
 //　クラス宣言
 //============================================================
 class DataManager
 {
 private:
+	static DoublyLinkedList scoresList;  // Scoresテキストのデータを格納するリスト
 
 public:
-	DataManager();   // コンストラクタ
-	~DataManager();  // デストラクタ
+	DataManager();                       // コンストラクタ
+	~DataManager();                      // デストラクタ
 
-	static void DispData(void);          // データを表示
+	static void DispData(bool isSort);   // データを表示
 	static void ReadScoreTextFile(void); // テキストファイルを読み込む
 };
