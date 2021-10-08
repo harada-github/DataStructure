@@ -3,7 +3,7 @@
 //  title  : データ管理 [DataManager.cpp]
 //  Author : 原田 陽央
 //   Date  : 2021/10/05
-//  Update : 2021/10/05
+//  Update : 2021/10/08
 //
 //============================================================
 #pragma once
@@ -53,13 +53,11 @@ DataManager::~DataManager()
 //------------------------------------------------------------
 void DataManager::DispData(bool isSort)
 {
-	scoresList.Remove(2);
 	// 表示用の変数
 	DoublyLinkedList::Node* temp = scoresList.GetTopPtr();
 
 	// isSort が true の場合は並び替えをする
-	//if (isSort) scoresList.Sort();
-
+	if (isSort) scoresList.Sort();
 
 	// エラーチェック
 	if (temp == nullptr)
@@ -99,7 +97,7 @@ void DataManager::ReadScoreTextFile()
 
 	// データ数によって変わるような仕様にする
 	// 100の部分を修正予定
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		// 全角スペースまでの文字を取得（9は全角スペース）
 		while ((temp = fgetc(fp)) != '\t')
