@@ -123,11 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DoublyLinkedList.cpp" />
     <ClCompile Include="hashTable.cpp" />
     <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DoublyLinkedList.h" />
     <ClInclude Include="hashTable.h" />
     <ClInclude Include="list.h" />
   </ItemGroup>

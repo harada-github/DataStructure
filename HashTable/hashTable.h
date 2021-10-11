@@ -3,7 +3,7 @@
 //  title  : データ構造（ハッシュテーブル） [hashTable.h]
 //  Author : 原田 陽央
 //   Date  : 2021/10/06
-//  Update : 2021/10/06
+//  Update : 2021/10/11
 //
 //============================================================
 #pragma once
@@ -14,7 +14,7 @@
 //============================================================
 #include <iostream>
 #include <string>
-#include "list.h"
+#include "DoublyLinkedList.h"
 
 
 using namespace std;
@@ -26,15 +26,14 @@ using namespace std;
 class HashTable
 {
 private:
-	static List* hashData[10];
+	DoublyLinkedList hashData[10];
 
 public:
 	HashTable();                                            // コンストラクタ
 	~HashTable();                                           // デストラクタ
 
-	static void Disp(void);                                 // 単語を表示
-	static void Search(string aWord);                       // 単語から検索
-	static void AddData(string aWord, string aDescription); // 要素を追加する
-	static void DataList(void);                             // データの一覧
-	static int GetHash(string aWord);                       // ハッシュ値を計算
+	void Disp(void);                                 // 単語を表示
+	RecordData Search(const string& searchWord);                       // 単語から検索
+	void AddData(const RecordData& addRecordData); // 要素を追加する
+	int GetHash(const string& getWord);                       // ハッシュ値を計算
 };
