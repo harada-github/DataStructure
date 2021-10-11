@@ -10,6 +10,7 @@
 //　インクルード
 //============================================================
 #include "list.h"
+#include "DoublyLinkedList.h"
 #include "stack.h"
 
 
@@ -21,33 +22,46 @@
 //------------------------------------------------------------
 int main(void)
 {
+	// スタックの生成
+	Stack testStack;
+
+	// 要素を入力
+	RecordData pushData[6] =
+	{
+		0, "Tanaka",
+		1, "Satou",
+		2, "Kobayashi",
+		3, "Kishida",
+		4, "Shimamura",
+		5, "Suga"
+	};
+
 	// 要素を追加
-	Stack::Push(0, "Tanaka");
-	Stack::Push(1, "Satou");
-	Stack::Push(2, "Kobayashi");
-	Stack::Push(3, "Kishida");
-	Stack::Push(4, "Shimamura");
-	Stack::Push(5, "Suga");
+	for (int i = 0; i < 6; i++)
+	{
+		testStack.Push(pushData[i]);
+	}
+
 	// データを一覧表示
-	Stack::Disp();
+	testStack.Disp();
 	// 改行用
 	std::cout << "" << endl;
 	
 
 	// １回目
 	// 要素を取り出す
-	Stack::Pop();
+	testStack.Pop();
 	std::cout << "" << endl;
 	// データを再度一覧表示
-	Stack::Disp();
+	testStack.Disp();
 	// 改行用
 	std::cout << "" << endl;
 
 
 	// ２回目
 	// 要素を取り出す
-	Stack::Pop();
+	testStack.Pop();
 	std::cout << "" << endl;
 	// データを再度一覧表示
-	Stack::Disp();
+	testStack.Disp();
 }

@@ -11,6 +11,7 @@
 //============================================================
 #include "stack.h"
 #include "list.h"
+#include "DoublyLinkedList.h"
 
 
 //============================================================
@@ -30,28 +31,7 @@ Stack::Stack()
 //------------------------------------------------------------
 Stack::~Stack()
 {
-	// 解放処理
-	List* tempList = nullptr;
-	List* deleteList = List::topPtr;
-
-	// エラーチェック
-	if (tempList == nullptr)
-	{
-		std::cout << "消去するデータはありません。" << std::endl;
-		return;
-	}
-
-	// リストの要素を順に解放
-	while (tempList != nullptr)
-	{
-		tempList = deleteList->nextPtr;
-		delete deleteList;
-		deleteList = tempList;
-	}
-
-	// 先頭と最後のポインタをNULLにする
-	List::topPtr = nullptr;
-	List::endPtr = nullptr;
+	;
 }
 
 
@@ -61,10 +41,10 @@ Stack::~Stack()
 void Stack::Disp()
 {
 	// 表示用の変数
-	List* dispList = List::topPtr;
+	DoublyLinkedList::Node* temp = pushList.GetTopPtr();
 
 	// エラーチェック
-	if (dispList == nullptr)
+	if (temp == nullptr)
 	{
 		std::cout << "データがありません。" << std::endl;
 		return;
@@ -74,11 +54,11 @@ void Stack::Disp()
 		std::cout << "データを表示" << endl;
 	}
 
-	// 要素の個数分表示
-	for (int i = 0; i < List::GetListCount(); i++)
+	// temp が NULL じゃなければデータ表示
+	while (temp != nullptr)
 	{
-		dispList->OutputData();
-		dispList = dispList->nextPtr;
+		std::cout << temp->recordData.score << "　" << temp->recordData.userName << std::endl;
+		temp = temp->nextPtr;
 	}
 }
 
@@ -88,26 +68,23 @@ void Stack::Disp()
 //------------------------------------------------------------
 void Stack::Pop()
 {
-	// データを取り出す
-	List* popData = List::endPtr;
-
-	// リストからデータを削除
-	List::Remove(List::GetListCount(), false);
+	// 取り出し用の変数
+	DoublyLinkedList::Node* temp = pushList.GetEndPtr();
 
 	// データを表示
 	std::cout << "下記のデータを取り出しました" << endl;
-	popData->OutputData();
+	std::cout << temp->recordData.score << "　" << temp->recordData.userName << std::endl;
 
-	// データを削除
-	delete popData;
+	// リストから末尾のデータを削除
+	pushList.Remove(pushList.GetDataCount());
 }
 
 
 //------------------------------------------------------------
 //　プッシュ（要素を追加する）
 //------------------------------------------------------------
-void Stack::Push(int num, string name)
+void Stack::Push(const RecordData& addRecordData)
 {
 	// リストにデータを追加
-	List::AddEnd(num, name);
+	pushList.AddEnd(addRecordData);
 }

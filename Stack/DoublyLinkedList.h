@@ -46,8 +46,8 @@ public:
 	};
 
 
-	DoublyLinkedList();                     // コンストラクタ
-	~DoublyLinkedList();                    // デストラクタ
+	DoublyLinkedList();                                                 // コンストラクタ
+	~DoublyLinkedList();                                                // デストラクタ
 
 	
 	void AddTop(RecordData addRecordData);  // 先頭にデータを追加
@@ -59,6 +59,6 @@ public:
 	int GetDataCount(void);                 // データの数の取得
 
 private:
-	Node* thisPtr;                          // 新しく追加されたノードへのポインタを格納
+	Node* thisPtr; // 新しく追加されたノードへのポインタを格納
 
 };

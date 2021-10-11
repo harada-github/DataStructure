@@ -14,6 +14,7 @@
 //============================================================
 #include <iostream>
 #include <string>
+#include "DoublyLinkedList.h"
 
 
 using namespace std;
@@ -25,12 +26,13 @@ using namespace std;
 class Stack
 {
 private:
+	DoublyLinkedList pushList;
 
 public:
-	Stack();                                // コンストラクタ
-	~Stack();                               // デストラクタ
+	Stack();                             // コンストラクタ
+	~Stack();                            // デストラクタ
 
-	static void Disp(void);                 // データを表示
-	static void Pop(void);                  // ポップ（要素を取り出す）
-	static void Push(int num, string name); // プッシュ（要素を追加する）
+	void Disp(void);                     // データを表示
+	void Pop(void);                      // ポップ（要素を取り出す）
+	void Push(const RecordData& addRecordData); // プッシュ（要素を追加する）
 };
