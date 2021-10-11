@@ -3,7 +3,7 @@
 //  title  : データ構造（キュー） [queue.cpp]
 //  Author : 原田 陽央
 //   Date  : 2021/10/06
-//  Update : 2021/10/06
+//  Update : 2021/10/11
 //
 //============================================================
 //============================================================
@@ -11,6 +11,7 @@
 //============================================================
 #include "queue.h"
 #include "list.h"
+#include "DoublyLinkedList.h"
 
 
 //============================================================
@@ -30,28 +31,7 @@ Queue::Queue()
 //------------------------------------------------------------
 Queue::~Queue()
 {
-	// 解放処理
-	List* tempList = nullptr;
-	List* deleteList = List::topPtr;
-
-	// エラーチェック
-	if (tempList == nullptr)
-	{
-		std::cout << "消去するデータはありません。" << std::endl;
-		return;
-	}
-
-	// リストの要素を順に解放
-	while (tempList != nullptr)
-	{
-		tempList = deleteList->nextPtr;
-		delete deleteList;
-		deleteList = tempList;
-	}
-
-	// 先頭と最後のポインタをNULLにする
-	List::topPtr = nullptr;
-	List::endPtr = nullptr;
+	;
 }
 
 
@@ -61,10 +41,10 @@ Queue::~Queue()
 void Queue::Disp()
 {
 	// 表示用の変数
-	List* dispList = List::topPtr;
+	DoublyLinkedList::Node* temp = queueList.GetTopPtr();
 
 	// エラーチェック
-	if (dispList == nullptr)
+	if (temp == nullptr)
 	{
 		std::cout << "データがありません。" << std::endl;
 		return;
@@ -74,11 +54,11 @@ void Queue::Disp()
 		std::cout << "データを表示" << endl;
 	}
 
-	// 要素の個数分表示
-	for (int i = 0; i < List::GetListCount(); i++)
+	// temp が NULL じゃなければデータ表示
+	while (temp != nullptr)
 	{
-		dispList->OutputData();
-		dispList = dispList->nextPtr;
+		std::cout << temp->recordData.score << "　" << temp->recordData.userName << std::endl;
+		temp = temp->nextPtr;
 	}
 }
 
@@ -88,26 +68,23 @@ void Queue::Disp()
 //------------------------------------------------------------
 void Queue::Dequeue()
 {
-	// データを取り出す
-	List* popData = List::topPtr;
-
-	// リストからデータを削除
-	List::Remove(1, false);
+	// 取り出し用の変数
+	DoublyLinkedList::Node* temp = queueList.GetTopPtr();
 
 	// データを表示
 	std::cout << "下記のデータを取り出しました" << endl;
-	popData->OutputData();
+	std::cout << temp->recordData.score << "　" << temp->recordData.userName << std::endl;
 
-	// データを削除
-	delete popData;
+	// リストから先頭のデータを削除
+	queueList.Remove(1);
 }
 
 
 //------------------------------------------------------------
 //　エンキュー（要素を追加する）
 //------------------------------------------------------------
-void Queue::Enqueue(int num, string name)
+void Queue::Enqueue(const RecordData& addRecordData)
 {
 	// リストにデータを追加
-	List::AddEnd(num, name);
+	queueList.AddEnd(addRecordData);
 }

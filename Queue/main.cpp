@@ -21,33 +21,46 @@
 //------------------------------------------------------------
 int main(void)
 {
+	// キューの生成
+	Queue testQueue;
+
+	// 要素を入力
+	RecordData enqueueData[6] =
+	{
+		0, "Tanaka",
+		1, "Satou",
+		2, "Kobayashi",
+		3, "Kishida",
+		4, "Shimamura",
+		5, "Suga"
+	};
+
 	// 要素を追加
-	Queue::Enqueue(0, "Tanaka");
-	Queue::Enqueue(1, "Satou");
-	Queue::Enqueue(2, "Kobayashi");
-	Queue::Enqueue(3, "Kishida");
-	Queue::Enqueue(4, "Shimamura");
-	Queue::Enqueue(5, "Suga");
+	for (int i = 0; i < 6; i++)
+	{
+		testQueue.Enqueue(enqueueData[i]);
+	}
+
 	// データを一覧表示
-	Queue::Disp();
+	testQueue.Disp();
 	// 改行用
 	std::cout << "" << endl;
 
 
 	// １回目
 	// 要素を取り出す
-	Queue::Dequeue();
+	testQueue.Dequeue();
 	std::cout << "" << endl;
 	// データを再度一覧表示
-	Queue::Disp();
+	testQueue.Disp();
 	// 改行用
 	std::cout << "" << endl;
 
 
 	// ２回目
 	// 要素を取り出す
-	Queue::Dequeue();
+	testQueue.Dequeue();
 	std::cout << "" << endl;
 	// データを再度一覧表示
-	Queue::Disp();
+	testQueue.Disp();
 }

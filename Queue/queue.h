@@ -14,6 +14,7 @@
 //============================================================
 #include <iostream>
 #include <string>
+#include "DoublyLinkedList.h"
 
 
 using namespace std;
@@ -25,12 +26,13 @@ using namespace std;
 class Queue
 {
 private:
+	DoublyLinkedList queueList;
 
 public:
 	Queue();                                   // コンストラクタ
 	~Queue();                                  // デストラクタ
 
-	static void Disp(void);                    // データを表示
-	static void Dequeue(void);                 // デキュー（要素を取り出す）
-	static void Enqueue(int num, string name); // エンキュー（要素を追加する）
+	void Disp(void);                    // データを表示
+	void Dequeue(void);                 // デキュー（要素を取り出す）
+	void Enqueue(const RecordData& addRecordData); // エンキュー（要素を追加する）
 };
