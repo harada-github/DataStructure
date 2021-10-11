@@ -129,12 +129,10 @@
   <ItemGroup>
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DoublyLinkedList.h" />
-    <ClInclude Include="list.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DoublyLinkedList.cpp" />
-    <ClCompile Include="list.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

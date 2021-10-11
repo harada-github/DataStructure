@@ -29,10 +29,10 @@ private:
 	DoublyLinkedList queueList;
 
 public:
-	Queue();                                   // コンストラクタ
-	~Queue();                                  // デストラクタ
+	Queue();                                       // コンストラクタ
+	~Queue();                                      // デストラクタ
 
-	void Disp(void);                    // データを表示
-	void Dequeue(void);                 // デキュー（要素を取り出す）
+	void Disp(void);                               // データを表示
+	void Dequeue(void);                            // デキュー（要素を取り出す）
 	void Enqueue(const RecordData& addRecordData); // エンキュー（要素を追加する）
 };

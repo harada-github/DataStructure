@@ -17,7 +17,6 @@
 #include <string>
 #include <sstream>
 #include "DataManager.h"
-#include "list.h"
 
 
 //============================================================

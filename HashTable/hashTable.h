@@ -29,11 +29,11 @@ private:
 	DoublyLinkedList hashData[10];
 
 public:
-	HashTable();                                            // コンストラクタ
-	~HashTable();                                           // デストラクタ
+	HashTable();                                   // コンストラクタ
+	~HashTable();                                  // デストラクタ
 
-	void Disp(void);                                 // 単語を表示
-	RecordData Search(const string& searchWord);                       // 単語から検索
+	void Disp(void);                               // 単語を表示
+	RecordData Search(const string& searchWord);   // 単語から検索
 	void AddData(const RecordData& addRecordData); // 要素を追加する
-	int GetHash(const string& getWord);                       // ハッシュ値を計算
+	int GetHash(const string& getWord);            // ハッシュ値を計算
 };
