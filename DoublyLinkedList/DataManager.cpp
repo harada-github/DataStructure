@@ -52,11 +52,11 @@ DataManager::~DataManager()
 //------------------------------------------------------------
 void DataManager::DispData(bool isSort)
 {
-	// 表示用の変数
-	DoublyLinkedList::Node* temp = scoresList.GetTopPtr();
-
 	// isSort が true の場合は並び替えをする
 	if (isSort) scoresList.Sort();
+
+	// 表示用の変数
+	DoublyLinkedList::Node* temp = scoresList.GetTopPtr();
 
 	// エラーチェック
 	if (temp == nullptr)
@@ -74,6 +74,8 @@ void DataManager::DispData(bool isSort)
 		// 次のポインタに更新
 		temp = temp->nextPtr;
 	}
+
+	std::cout << scoresList.GetDataCount() << std::endl;
 }
 
 

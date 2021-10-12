@@ -210,39 +210,35 @@ void DoublyLinkedList::Sort()
 
 		for (int i = 0; i < dataCount - 1 - j; i++)
 		{
-			// list2のscoreが高い場合は入れ替え
+			// data2のscoreが高い場合は入れ替え
 			if (data1->recordData.score < data2->recordData.score)
 			{
-				// list1の次とlist2の前の接続先を変更
+				// data1の次とdata2の前の接続先を変更
 				data1->nextPtr = data2->nextPtr;
 				data2->prevPtr = data1->prevPtr;
+
+				// data1が先頭で入れ替える場合はtopPtrを更新
+				if (data1->prevPtr == nullptr)
+				{
+					topPtr = data2;
+				}
 
 				// 入れ替え後のそれぞれをつなぐ
 				data2->nextPtr = data1;
 				data1->prevPtr = data2;
 
-				// 入れ替える前のlist1とlist2の前後の接続先を変更
-				if (data1 == topPtr)
-				{
-					// list1が先頭だった場合
-					topPtr = data2;
-				}
-				else
-				{
-					data2->prevPtr->nextPtr = data2;
-				}
-
-				if (data2 == endPtr)
-				{
-					// list2が最後だった場合
-					endPtr = data1;
-				}
-				else
+				// data1の次とdata2の前後の接続先を変更
+				if (data1->nextPtr != nullptr)
 				{
 					data1->nextPtr->prevPtr = data1;
 				}
 
-				// 次に比較するものをlist2へ代入
+				if (data2->prevPtr != nullptr)
+				{
+					data2->prevPtr->nextPtr = data2;
+				}
+
+				// 次に比較するものをdata2へ代入
 				data2 = data1->nextPtr;
 			}
 			else
