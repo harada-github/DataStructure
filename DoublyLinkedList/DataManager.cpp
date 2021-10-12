@@ -74,8 +74,6 @@ void DataManager::DispData(bool isSort)
 		// 次のポインタに更新
 		temp = temp->nextPtr;
 	}
-
-	std::cout << scoresList.GetDataCount() << std::endl;
 }
 
 
